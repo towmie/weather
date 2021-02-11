@@ -38,7 +38,6 @@ body {
 .aside {
   background-color: #1e213a;
   grid-column: 1/2;
-  height: 100vh;
   padding: 4.2rem 4.6rem; }
   .aside__search-bar {
     display: flex;
@@ -74,10 +73,9 @@ body {
     text-align: center;
     margin-top: 7.5rem; }
   .aside__info-img {
-    width: 20rem;
-    height: 23rem; }
+    width: 100%; }
   .aside__info-data {
-    margin: 5rem 0;
+    margin: 3rem 0;
     font-size: 10rem; }
   .aside__info-decription {
     margin: 7.5rem 0;

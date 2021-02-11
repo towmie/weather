@@ -1,7 +1,9 @@
 .aside {
   background-color: $secondary-dark;
   grid-column: 1/2;
-  height: 100vh;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-between;
   padding: 4.2rem 4.6rem;
 
   &__search-bar {
@@ -52,12 +54,11 @@
   }
 
   &__info-img {
-    width: 20rem;
-    height: 23rem;
+    width: 100%;
   }
 
   &__info-data {
-    margin: 5rem 0;
+    margin: 3rem 0;
     font-size: 10rem;
   }
 
