@@ -1,0 +1,39 @@
+$primary-dark: #100e1d;
+$secondary-dark: #1e213a;
+$primary-white: #e7e7eb;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0 auto;
+  font-size: 1.6rem;
+  font-family: 'Raleway', sans-serif;
+  line-height: 2.7rem;
+  font-weight: 400;
+  color: $primary-white;
+  background-color: $primary-dark;
+
+  & a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  & ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 100%;
+}

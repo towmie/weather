@@ -1,0 +1,71 @@
+.top-bar {
+  margin-bottom: 6rem;
+
+  &__type-wrapper {
+    margin-bottom: 3.5rem;
+    display: flex;
+  }
+
+  &__type {
+    display: block;
+    margin-left: auto;
+    align-self: flex-end;
+  }
+  &__type-btn {
+    width: 4rem;
+    height: 4rem;
+    margin: 0.5rem;
+
+    font-size: 1.8rem;
+    background-color: #585676;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+
+    &--active {
+      background-color: #e7e7eb;
+      color: #110e3c;
+    }
+  }
+
+  &__forecast {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__forecast-card {
+    box-sizing: border-box;
+    width: 12.2rem;
+    height: 17.7rem;
+    background-color: $secondary-dark;
+    text-align: center;
+    padding: 1.8rem;
+    margin: 0.5rem;
+  }
+
+  &__date {
+    font-weight: 300;
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__img {
+    width: 5.2rem;
+    height: 6.2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  &__temp {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  &__day {
+    &--min {
+      color: #a09fb1;
+    }
+  }
+}

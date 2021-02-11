@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Weather API</title>
+  </head>
+  <body>
+    <div class="main">
+      <aside class="aside">
+        <div class="aside__search-bar"
+          ><button class="aside__search-btn">Search For Places</button>
+          <button class="aside__location-btn"> </button>
+        </div>
+        <ul class="aside__info">
+          <li class="aside__info-item">
+            <img class="aside__info-img" src="img/test.png" alt="" />
+          </li>
+          <li class="aside__info-item"
+            ><p class="aside__info-data"
+              >15<span class="temper-type temper-type--big">C</span></p
+            ></li
+          >
+          <li class="aside__info-item"
+            ><p class="aside__info-decription">Shower</p>
+          </li>
+        </ul>
+        <div class="aside__footer">
+          <div class="aside__footer-date">
+            <p class="aside__footer-time">Today</p>
+            <span></span>
+            <p class="aside__footer-day">Th, 11 Feb</p>
+          </div>
+          <p class="aside__footer-location">Barcelona</p>
+        </div>
+      </aside>
+      <main class="layout">
+        <div class="layout__wrapper">
+          <section class="top-bar">
+            <div class="top-bar__type-wrapper">
+              <div class="top-bar__type">
+                <button class="top-bar__type-btn top-bar__type-btn--active"
+                  ><span class="temp-m">C</span></button
+                >
+                <button class="top-bar__type-btn"
+                  ><span class="temp-m">F</span>
+                </button>
+              </div>
+            </div>
+            <ul class="top-bar__forecast">
+              <li class="top-bar__forecast-card">
+                <h5 class="top-bar__date">Tomorrow</h5>
+                <img src="/img/small-test.png" alt="" class="top-bar__img" />
+                <div class="top-bar__temp">
+                  <p class="top-bar__day">16<span class="temp">C</span></p>
+                  <p class="top-bar__day--min">17<span class="temp">C</span></p>
+                </div>
+              </li>
+            </ul>
+          </section>
+          <section class="main-bar">
+            <h3 class="main-bar__title">Today's Highlights</h3>
+            <ul class="main-bar__list">
+              <li class="main-bar__item">
+                <h5 class="main-bar__heading">Wind Status</h5>
+                <p class="main-bar__data">7<span>mph</span></p>
+                <div class="main-bar__wind-wrapper">
+                  <span class="main-bar__wind-icon" data-rot=""></span>
+                  <span class="main-bar__wind-blow">WSW</span>
+                </div>
+              </li>
+              <li class="main-bar__item">
+                <h5 class="main-bar__heading">Humidity</h5>
+                <p class="main-bar__data">84<span>%</span></p>
+                <input type="range" value="80" />
+              </li>
+              <li class="main-bar__item">
+                <h5 class="main-bar__heading">Visability</h5>
+                <p class="main-bar__data">6.4<span>miles</span></p>
+              </li>
+              <li class="main-bar__item">
+                <h5 class="main-bar__heading">Air Prsure</h5>
+                <p class="main-bar__data">998<span>mb</span></p>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </main>
+    </div>
+    <script src="js/app.js"></script>
+  </body>
+</html>
