@@ -32,7 +32,7 @@ body {
   grid-column: 2/4;
   padding: 4.5rem; }
   .layout__wrapper {
-    max-width: 70rem;
+    max-width: 72rem;
     margin: 0 auto; }
 
 .aside {
@@ -187,7 +187,7 @@ body {
     align-items: center; }
   .top-bar__forecast-card {
     box-sizing: border-box;
-    width: 12.2rem;
+    min-width: 12.5rem;
     height: 17.7rem;
     background-color: #1e213a;
     text-align: center;

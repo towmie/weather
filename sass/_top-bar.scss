@@ -36,7 +36,7 @@
 
   &__forecast-card {
     box-sizing: border-box;
-    width: 12.2rem;
+    min-width: 12.5rem;
     height: 17.7rem;
     background-color: $secondary-dark;
     text-align: center;
