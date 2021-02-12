@@ -27,15 +27,13 @@ const date = `${new Date()}`;
 const currDay = date.split(' ')[0];
 const currDate = +date.split(' ')[2];
 const currMonth = date.split(' ')[1];
-// metric
-// imperial
+
 let units;
 
 function getUnits() {
   tempType.forEach((el) => {
     if (el.classList.contains('top-bar__type-btn--active')) {
       units = el.dataset.type;
-      console.log(units);
     }
   });
 }
@@ -47,7 +45,6 @@ async function getData(city, type) {
     );
 
     if (!response.ok) throw new Error('Problem getting City');
-
     const data = await response.json();
     renderMainInfo(data);
     console.log(data);
@@ -61,7 +58,7 @@ function renderMainInfo(data) {
   const { speed, deg } = data.wind;
   const { main: currentWeather, icon: imgId } = data.weather[0];
 
-  asideImg.src = `https://openweathermap.org/img/wn/${imgId}@2x.png`;
+  asideImg.src = `/img/weather-icons/${imgId}.png`;
   asideData.textContent = `${currentTemp.toFixed(1)}`;
   asideDescription.textContent = currentWeather;
 
@@ -116,7 +113,7 @@ function renderForecast(data) {
       html = `
             <li class="top-bar__forecast-card">
                 <h5 class="top-bar__date">${insertDate}</h5>
-                <img width=60 height=60 src="https://openweathermap.org/img/wn/${icon}.png" alt="" class="top-bar__img" />
+                <img width=60 height=60 src="/img/weather-icons/${icon}.png" alt="" class="top-bar__img" />
                 <div class="top-bar__temp">
                   <p class="top-bar__day">${Math.round(
                     maxTemp,
@@ -134,6 +131,7 @@ function renderForecast(data) {
 
 modalSubmit.addEventListener('click', function (e) {
   e.preventDefault();
+  if (!modalInput.value) return;
   inputValue = modalInput.value;
   updateUI(inputValue);
   main.classList.remove('fade');
@@ -142,17 +140,11 @@ modalSubmit.addEventListener('click', function (e) {
 
 submitInput.addEventListener('click', function (e) {
   e.preventDefault();
+  if (!searchInput.value) return;
+
   inputValue = searchInput.value;
   updateUI(inputValue);
 });
-
-function updateUI(data) {
-  getUnits();
-  forecastBox.textContent = '';
-  getData(data, units);
-  getForecast(data, units);
-  searchInput.value = '';
-}
 
 tempTypeContainer.addEventListener('click', function (e) {
   const clicked = e.target.closest('.top-bar__type-btn');
@@ -163,3 +155,11 @@ tempTypeContainer.addEventListener('click', function (e) {
   clicked.classList.add('top-bar__type-btn--active');
   updateUI(inputValue);
 });
+
+function updateUI(data) {
+  getUnits();
+  forecastBox.textContent = '';
+  getData(data, units);
+  getForecast(data, units);
+  searchInput.value = '';
+}

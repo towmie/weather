@@ -24,6 +24,9 @@ body {
     margin: 0;
     padding: 0; }
 
+button {
+  outline: none; }
+
 .main {
   display: flex;
   overflow-x: hidden; }
@@ -268,7 +271,14 @@ body {
     background-color: #585676;
     border-radius: 50%;
     border: none;
-    outline: none; }
+    outline: none;
+    transition: all 0.3s; }
+    .top-bar__type-btn:hover {
+      transform: translateY(-0.5rem);
+      box-shadow: 0 1rem 1rem #000; }
+    .top-bar__type-btn:active {
+      transform: translateY(-0.2rem);
+      box-shadow: 0 1rem 1rem #000; }
     .top-bar__type-btn--active {
       background-color: #e7e7eb;
       color: #110e3c; }

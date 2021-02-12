@@ -48,6 +48,16 @@
     border-radius: 50%;
     border: none;
     outline: none;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: translateY(-0.5rem);
+      box-shadow: 0 1rem 1rem #000;
+    }
+    &:active {
+      transform: translateY(-0.2rem);
+      box-shadow: 0 1rem 1rem #000;
+    }
 
     &--active {
       background-color: #e7e7eb;
