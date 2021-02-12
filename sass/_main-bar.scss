@@ -18,6 +18,12 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    transition: all 0.3s;
+    box-shadow: 0rem 1rem 2rem #000;
+
+    &:hover {
+      transform: translateY(-0.7rem);
+    }
   }
 
   &__heading {

@@ -1,7 +1,7 @@
 const apiKey = '56b7d91218774cf2f9808498488f31f9';
 const asideMainBox = document.querySelector('.aside__info');
 const footerDate = document.querySelector('.aside__footer-day');
-const footerLocarion = document.querySelector('.aside__footer-location');
+const headerLocarion = document.querySelector('.aside__location');
 const humidityBox = document.querySelector('.main-bar__data--humidity');
 const windSpeed = document.querySelector('.main-bar__data--speed');
 const range = document.querySelector('.main-bar__range');
@@ -9,40 +9,50 @@ const windIcon = document.querySelector('.main-bar__wind-icon');
 const visability = document.querySelector('.main-bar__data--visability');
 const pressureBox = document.querySelector('.main-bar__data--pressure');
 const forecastBox = document.querySelector('.top-bar__forecast');
+const searchInput = document.querySelector('.top-bar__search');
+const submitInput = document.querySelector('.top-bar__search-btn');
+const asideImg = document.querySelector('.aside__info-img');
+const asideDescription = document.querySelector('.aside__info-decription');
+const asideData = document.querySelector('.aside__data');
+const main = document.querySelector('.main');
+const modal = document.querySelector('.modal');
+const modalInput = document.querySelector('.modal__input');
+const modalSubmit = document.querySelector('.modal__input-btn');
+const tempType = document.querySelectorAll('.top-bar__type-btn');
+const tempTypeContainer = document.querySelector('.top-bar__type');
+
+let inputValue;
+
 const date = `${new Date()}`;
 const currDay = date.split(' ')[0];
 const currDate = +date.split(' ')[2];
 const currMonth = date.split(' ')[1];
 // metric
-const cityInput = 'moscow';
+// imperial
+let units;
 
-async function getData(city) {
-  try {
-    const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`,
-    );
-
-    if (!response.ok) throw new Error('Problem getting City');
-
-    const data = await response.json();
-    console.log(data);
-    renderMainInfo(data);
-  } catch (err) {
-    console.log(`Yo, your error: ${err.message}`);
-  }
+function getUnits() {
+  tempType.forEach((el) => {
+    if (el.classList.contains('top-bar__type-btn--active')) {
+      units = el.dataset.type;
+      console.log(units);
+    }
+  });
 }
 
-async function getForecast(city) {
+async function getData(city, type) {
   try {
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`,
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${type}`,
     );
 
     if (!response.ok) throw new Error('Problem getting City');
+
     const data = await response.json();
-    renderForecast(data);
+    renderMainInfo(data);
+    console.log(data);
   } catch (err) {
-    console.log(err.message);
+    console.log(`Yo, your error: ${err.message}`);
   }
 }
 
@@ -51,25 +61,12 @@ function renderMainInfo(data) {
   const { speed, deg } = data.wind;
   const { main: currentWeather, icon: imgId } = data.weather[0];
 
-  const mainHtml = `
-          <li class="aside__info-item">
-            <img class="aside__info-img" src="https://openweathermap.org/img/wn/${imgId}@2x.png" alt="" />
-          </li>
-          <li class="aside__info-item"
-            ><p class="aside__info-data"
-              >${Math.round(
-                currentTemp,
-              )}<span class="temper-type temper-type--big">C</span></p
-            ></li
-          >
-          <li class="aside__info-item"
-            ><p class="aside__info-decription">${currentWeather}</p>
-          </li>
-  `;
+  asideImg.src = `https://openweathermap.org/img/wn/${imgId}@2x.png`;
+  asideData.textContent = `${currentTemp.toFixed(1)}`;
+  asideDescription.textContent = currentWeather;
 
-  asideMainBox.insertAdjacentHTML('beforeend', mainHtml);
   footerDate.textContent = `${currDay}, ${currDate} ${currMonth}`;
-  footerLocarion.textContent = `${cityInput[0].toUpperCase()}${cityInput.slice(
+  headerLocarion.textContent = `${inputValue[0].toUpperCase()}${inputValue.slice(
     1,
   )}`;
 
@@ -80,10 +77,23 @@ function renderMainInfo(data) {
   visability.textContent = `${(data.visibility / 1000).toFixed(1)}`;
   pressureBox.textContent = pressure;
 }
+async function getForecast(city, type) {
+  try {
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${type}`,
+    );
+
+    if (!response.ok) throw new Error('Problem getting City');
+    const data = await response.json();
+    renderForecast(data);
+  } catch (err) {
+    console.log(err.message);
+  }
+}
 
 function renderForecast(data) {
   const { list } = data;
-  const newList = list
+  list
     .filter((el) => {
       const newtime = el.dt_txt.split(' ')[1];
       if (newtime === '12:00:00') return el;
@@ -104,9 +114,9 @@ function renderForecast(data) {
         insertDate = 'Tomorrow';
       }
       html = `
-      <li class="top-bar__forecast-card">
+            <li class="top-bar__forecast-card">
                 <h5 class="top-bar__date">${insertDate}</h5>
-                <img src="https://openweathermap.org/img/wn/${icon}.png" alt="" class="top-bar__img" />
+                <img width=60 height=60 src="https://openweathermap.org/img/wn/${icon}.png" alt="" class="top-bar__img" />
                 <div class="top-bar__temp">
                   <p class="top-bar__day">${Math.round(
                     maxTemp,
@@ -122,8 +132,34 @@ function renderForecast(data) {
     });
 }
 
-function updateUI() {
-  getData(cityInput);
-  getForecast(cityInput);
+modalSubmit.addEventListener('click', function (e) {
+  e.preventDefault();
+  inputValue = modalInput.value;
+  updateUI(inputValue);
+  main.classList.remove('fade');
+  modal.style.display = 'none';
+});
+
+submitInput.addEventListener('click', function (e) {
+  e.preventDefault();
+  inputValue = searchInput.value;
+  updateUI(inputValue);
+});
+
+function updateUI(data) {
+  getUnits();
+  forecastBox.textContent = '';
+  getData(data, units);
+  getForecast(data, units);
+  searchInput.value = '';
 }
-updateUI();
+
+tempTypeContainer.addEventListener('click', function (e) {
+  const clicked = e.target.closest('.top-bar__type-btn');
+  if (!clicked) return;
+  tempType.forEach((t) => {
+    t.classList.remove('top-bar__type-btn--active');
+  });
+  clicked.classList.add('top-bar__type-btn--active');
+  updateUI(inputValue);
+});

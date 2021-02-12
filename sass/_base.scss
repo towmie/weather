@@ -19,6 +19,7 @@ body {
   font-weight: 400;
   color: $primary-white;
   background-color: $primary-dark;
+  position: relative;
 
   & a {
     text-decoration: none;
@@ -33,7 +34,46 @@ body {
 }
 
 .main {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 100%;
+  display: flex;
+  overflow-x: hidden;
+}
+
+.fade {
+  filter: blur(10px);
+}
+
+.modal {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  &--hide {
+    display: none;
+  }
+
+  &__form {
+    position: relative;
+  }
+
+  &__input {
+    padding: 1.5rem 3rem;
+    font-size: 3.5rem;
+    font-family: inherit;
+
+    border: none;
+    outline: none;
+    border-radius: 2rem;
+  }
+  &__input-btn {
+    position: absolute;
+    top: 50%;
+    right: 2rem;
+    transform: translateY(-50%);
+    width: 2.5rem;
+    height: 2.5rem;
+    background-image: url(/img/icons/search-solid.svg);
+    border: none;
+    background-color: transparent;
+  }
 }

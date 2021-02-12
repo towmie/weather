@@ -1,9 +1,25 @@
 .layout {
-  grid-column: 2/4;
-  padding: 4.5rem;
+  padding: 4rem;
+  margin: 0 auto;
+  max-width: 80rem;
+  width: 100%;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 85rem;
+    height: 85rem;
+    top: -20rem;
+    right: -30rem;
+    border-radius: 50%;
+    background-color: $secondary-dark;
+    opacity: 0.3;
+    z-index: -1;
+  }
 
   &__wrapper {
-    max-width: 72rem;
-    margin: 0 auto;
+    z-index: 2;
   }
 }

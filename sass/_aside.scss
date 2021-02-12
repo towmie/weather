@@ -1,15 +1,61 @@
 .aside {
   background-color: $secondary-dark;
-  grid-column: 1/2;
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: space-between;
+  min-width: 32rem;
+  max-width: 40rem;
+  width: 100%;
   padding: 4.2rem 4.6rem;
+  position: relative;
+  box-shadow: 0 0 1rem #000;
+  overflow: hidden;
+
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 40rem;
+    height: 40rem;
+
+    border-radius: 50%;
+    background-color: $primary-dark;
+    opacity: 0.3;
+    z-index: 0;
+  }
+
+  &::before {
+    top: -20rem;
+    left: 10rem;
+  }
+  &::after {
+    bottom: -20rem;
+    right: 15.5rem;
+  }
 
   &__search-bar {
+    z-index: 10;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+  }
+
+  &__location {
+    position: relative;
+    font-weight: 300;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    display: inline-block;
+    padding-left: 2rem;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: -0.5rem;
+      top: 0;
+      width: 1.4rem;
+      height: 2rem;
+      background-image: url(/img/icons/map-marker-alt-solid.svg);
+    }
   }
 
   &__search-btn {
@@ -54,29 +100,32 @@
   }
 
   &__info-img {
-    width: 100%;
+    width: 24rem;
   }
 
   &__info-data {
     margin: 3rem 0;
+  }
+
+  &__data {
     font-size: 10rem;
   }
 
   &__info-decription {
     margin: 7.5rem 0;
 
-    color: #a09fb1;
-    font-weight: 300;
-    font-size: 2.6rem;
+    color: #d8d8da;
+    font-weight: 500;
+    font-size: 2.8rem;
   }
 
   &__footer {
     margin-top: auto;
 
     text-align: center;
-    font-size: 18px;
-    line-height: 21px;
-    font-weight: 300;
+    font-size: 2rem;
+    line-height: 2.1rem;
+    font-weight: 500;
     color: #88869d;
   }
 
@@ -98,25 +147,6 @@
       height: 0.3rem;
       background-color: #88869d;
       border-radius: 50%;
-    }
-  }
-
-  &__footer-location {
-    margin-top: 3.2rem;
-    position: relative;
-
-    font-size: 1.8rem;
-    display: inline-block;
-    padding-left: 2rem;
-
-    &::before {
-      content: '';
-      position: absolute;
-      left: -0.5rem;
-      top: 0;
-      width: 1.4rem;
-      height: 2rem;
-      background-image: url(/img/icons/map-marker-alt-solid.svg);
     }
   }
 }

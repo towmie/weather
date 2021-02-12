@@ -13,55 +13,96 @@
     <title>Weather API</title>
   </head>
   <body>
-    <div class="main">
+    <div class="main fade">
       <aside class="aside">
-        <div class="aside__search-bar"
-          ><button class="aside__search-btn">Search For Places</button>
-          <button class="aside__location-btn"> </button>
-        </div>
-        <ul class="aside__info">
-          <!-- <li class="aside__info-item">
-            <img class="aside__info-img" src="img/test.png" alt="" />
-          </li>
-          <li class="aside__info-item"
-            ><p class="aside__info-data"
-              >15<span class="temper-type temper-type--big">C</span></p
-            ></li
-          >
-          <li class="aside__info-item"
-            ><p class="aside__info-decription">Shower</p>
-          </li> -->
-        </ul>
-        <div class="aside__footer">
-          <div class="aside__footer-date">
-            <p class="aside__footer-time">Today</p>
-            <span></span>
-            <p class="aside__footer-day"></p>
+        <div class="aside__wrapper">
+          <div class="aside__search-bar">
+            <p class="aside__location"> </p>
+            <button class="aside__location-btn"></button>
           </div>
-          <p class="aside__footer-location"></p>
+          <ul class="aside__info">
+            <li class="aside__info-item">
+              <img class="aside__info-img" src="img/test.png" alt="" />
+            </li>
+            <li class="aside__info-item">
+              <p class="aside__info-data">
+                <span class="aside__data">15</span>
+                <span class="temper-type temper-type--big">C</span>
+              </p>
+            </li>
+            <li class="aside__info-item"
+              ><p class="aside__info-decription">Shower</p>
+            </li>
+          </ul>
+          <div class="aside__footer">
+            <div class="aside__footer-date">
+              <p class="aside__footer-time">Today</p>
+              <span></span>
+              <p class="aside__footer-day"></p>
+            </div>
+          </div>
         </div>
       </aside>
       <main class="layout">
         <div class="layout__wrapper">
           <section class="top-bar">
             <div class="top-bar__type-wrapper">
+              <form action="" class="top-bar__form">
+                <input
+                  type="text"
+                  class="top-bar__search"
+                  placeholder="Find your city"
+                  value=""
+                />
+                <button type="submit" class="top-bar__search-btn"></button>
+              </form>
               <div class="top-bar__type">
-                <button class="top-bar__type-btn top-bar__type-btn--active"
+                <button
+                  class="top-bar__type-btn top-bar__type-btn--active"
+                  data-type="metric"
                   ><span class="temp-m">C</span></button
                 >
-                <button class="top-bar__type-btn"
+                <button class="top-bar__type-btn" data-type="imperial"
                   ><span class="temp-m">F</span>
                 </button>
               </div>
             </div>
             <ul class="top-bar__forecast">
-              <!-- <li class="top-bar__forecast-card">
+              <li class="top-bar__forecast-card">
                 <h5 class="top-bar__date">Tomorrow</h5>
                 <img src="/img/small-test.png" alt="" class="top-bar__img" />
                 <div class="top-bar__temp">
                   <p class="top-bar__day">16<span class="temp">C</span></p>
                   <p class="top-bar__day--min">17<span class="temp">C</span></p>
-                </div> -->
+                </div> </li
+              ><li class="top-bar__forecast-card">
+                <h5 class="top-bar__date">Tomorrow</h5>
+                <img src="/img/small-test.png" alt="" class="top-bar__img" />
+                <div class="top-bar__temp">
+                  <p class="top-bar__day">16<span class="temp">C</span></p>
+                  <p class="top-bar__day--min">17<span class="temp">C</span></p>
+                </div> </li
+              ><li class="top-bar__forecast-card">
+                <h5 class="top-bar__date">Tomorrow</h5>
+                <img src="/img/small-test.png" alt="" class="top-bar__img" />
+                <div class="top-bar__temp">
+                  <p class="top-bar__day">16<span class="temp">C</span></p>
+                  <p class="top-bar__day--min">17<span class="temp">C</span></p>
+                </div> </li
+              ><li class="top-bar__forecast-card">
+                <h5 class="top-bar__date">Tomorrow</h5>
+                <img src="/img/small-test.png" alt="" class="top-bar__img" />
+                <div class="top-bar__temp">
+                  <p class="top-bar__day">16<span class="temp">C</span></p>
+                  <p class="top-bar__day--min">17<span class="temp">C</span></p>
+                </div> </li
+              ><li class="top-bar__forecast-card">
+                <h5 class="top-bar__date">Tomorrow</h5>
+                <img src="/img/small-test.png" alt="" class="top-bar__img" />
+                <div class="top-bar__temp">
+                  <p class="top-bar__day">16<span class="temp">C</span></p>
+                  <p class="top-bar__day--min">17<span class="temp">C</span></p>
+                </div>
               </li>
             </ul>
           </section>
@@ -111,6 +152,17 @@
           </section>
         </div>
       </main>
+    </div>
+    <div class="modal">
+      <form action="" class="modal__form">
+        <input
+          type="text"
+          class="modal__input"
+          placeholder="Find your city"
+          value=""
+        />
+        <button type="submit" class="modal__input-btn"></button>
+      </form>
     </div>
     <script src="js/app.js"></script>
   </body>
