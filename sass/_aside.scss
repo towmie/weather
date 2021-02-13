@@ -150,3 +150,15 @@
     }
   }
 }
+@media (max-width: 900px) {
+  .aside {
+    width: 32rem;
+  }
+}
+
+@media (max-width: 825px) {
+  .aside {
+    max-width: 82.5rem;
+    width: 100%;
+  }
+}

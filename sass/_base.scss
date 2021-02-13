@@ -46,3 +46,9 @@ button {
   filter: blur(10px);
   pointer-events: none;
 }
+
+@media (max-width: 825px) {
+  .main {
+    flex-wrap: wrap;
+  }
+}
