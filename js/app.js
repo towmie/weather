@@ -1,30 +1,3 @@
-function getUnits() {
-  tempType.forEach((el) => {
-    if (el.classList.contains('top-bar__type-btn--active')) {
-      units = el.dataset.type;
-    }
-  });
-}
-
-function changeUnits(units) {
-  units === 'metric' ? (unit = 'C') : (unit = 'F');
-}
-
-function error(err) {
-  errorBox.classList.add('error--active');
-
-  modal.style.opacity = 0;
-  main.classList.add('fade');
-  errorMessage.textContent = `${err}, please, try again`;
-
-  setTimeout(function () {
-    modalInput.value = '';
-    modal.style.opacity = 1;
-    modal.style.display = 'block';
-    errorBox.classList.remove('error--active');
-  }, 4000);
-}
-
 async function getData(city, type) {
   try {
     const response = await fetch(
@@ -53,6 +26,33 @@ async function getForecast(city, type) {
   } catch (err) {
     error(err);
   }
+}
+
+function getUnits() {
+  tempType.forEach((el) => {
+    if (el.classList.contains('top-bar__type-btn--active')) {
+      units = el.dataset.type;
+    }
+  });
+}
+
+function changeUnits(units) {
+  units === 'metric' ? (unit = 'C') : (unit = 'F');
+}
+
+function error(err) {
+  errorBox.classList.add('error--active');
+
+  modal.style.opacity = 0;
+  main.classList.add('fade');
+  errorMessage.textContent = `${err}, please, try again`;
+
+  setTimeout(function () {
+    modalInput.value = '';
+    modal.style.opacity = 1;
+    modal.style.display = 'block';
+    errorBox.classList.remove('error--active');
+  }, 4000);
 }
 
 function renderMainInfo(data) {
