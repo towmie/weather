@@ -106,7 +106,7 @@ button {
       top: 0;
       width: 1.4rem;
       height: 2rem;
-      background-image: url(/img/icons/map-marker-alt-solid.svg); }
+      background-image: url(https://zyzin.com/projects/weather/img/icons/map-marker-alt-solid.svg); }
   .aside__search-btn {
     background-color: #6e707a;
     padding: 1.1rem 1.8rem;
@@ -123,7 +123,7 @@ button {
     width: 4rem;
     height: 4rem;
     background-color: #6e707a;
-    background-image: url(/img/icons/crosshairs-solid.svg);
+    background-image: url(https://zyzin.com/projects/weather/img/icons/crosshairs-solid.svg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 2.6rem 2.6rem;
@@ -245,7 +245,7 @@ button {
     transform: translateY(-50%);
     width: 2.5rem;
     height: 2.5rem;
-    background-image: url(/img/icons/search-solid.svg);
+    background-image: url(https://zyzin.com/projects/weather/img/icons/search-solid.svg);
     border: none;
     background-color: transparent; }
 
@@ -334,7 +334,7 @@ button {
     transform: translateY(-50%);
     width: 2.5rem;
     height: 2.5rem;
-    background-image: url(/img/icons/search-solid.svg);
+    background-image: url(https://zyzin.com/projects/weather/img/icons/search-solid.svg);
     border: none;
     background-color: transparent; }
   .top-bar__type {
@@ -452,7 +452,7 @@ button {
   height: 2rem;
   border-radius: 50%;
   background-color: #656568;
-  background-image: url(/img/icons/location-arrow-solid.svg);
+  background-image: url(https://zyzin.com/projects/weather/img/icons/location-arrow-solid.svg);
   background-size: 1rem 1.2rem;
   background-repeat: no-repeat;
   background-position: center; }

@@ -25,6 +25,7 @@ const mainUnit = document.querySelector('.temper-type--big');
 let unit;
 const errorBox = document.querySelector('.error');
 const errorMessage = document.querySelector('.error__message');
+const windSpeedUnits = document.querySelector('.speed-wind');
 
 let inputValue;
 
@@ -34,5 +35,6 @@ const currDate = +date.split(' ')[2];
 const currMonth = date.split(' ')[1];
 
 let units;
+let windUnit;
 
 const windRange = document.querySelector('.range__tracker');

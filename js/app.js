@@ -38,6 +38,7 @@ function getUnits() {
 
 function changeUnits(units) {
   units === 'metric' ? (unit = 'C') : (unit = 'F');
+  units === 'metric' ? (windUnit = 'm/s') : (windUnit = 'ml/h');
 }
 
 function error(err) {
@@ -60,7 +61,7 @@ function renderMainInfo(data) {
   const { speed, deg } = data.wind;
   const { main: currentWeather, icon: imgId } = data.weather[0];
 
-  asideImg.src = `/img/weather-icons/${imgId}.png`;
+  asideImg.src = `https://zyzin.com/projects/weather/img/weather-icons/${imgId}.png`;
   asideData.textContent = `${currentTemp.toFixed(1)}`;
   asideDescription.textContent = currentWeather;
 
@@ -76,6 +77,7 @@ function renderMainInfo(data) {
   visability.textContent = `${(data.visibility / 1000).toFixed(1)}`;
   pressureBox.textContent = pressure;
   mainUnit.textContent = unit;
+  windSpeedUnits.textContent = windUnit;
 }
 
 function renderForecast(data) {
@@ -103,7 +105,7 @@ function renderForecast(data) {
       html = `
             <li class="top-bar__forecast-card">
                 <h5 class="top-bar__date">${insertDate}</h5>
-                <img width=60 height=60 src="/img/weather-icons/${icon}.png" alt="" class="top-bar__img" />
+                <img width=60 height=60 src="https://zyzin.com/projects/weather/img/weather-icons/${icon}.png" alt="" class="top-bar__img" />
                 <div class="top-bar__temp">
                   <p class="top-bar__day">${Math.round(
                     maxTemp,
