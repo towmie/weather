@@ -1,35 +1,3 @@
-const apiKey = '56b7d91218774cf2f9808498488f31f9';
-const asideMainBox = document.querySelector('.aside__info');
-const footerDate = document.querySelector('.aside__footer-day');
-const headerLocarion = document.querySelector('.aside__location');
-const humidityBox = document.querySelector('.main-bar__data--humidity');
-const windSpeed = document.querySelector('.main-bar__data--speed');
-const range = document.querySelector('.main-bar__range');
-const windIcon = document.querySelector('.main-bar__wind-icon');
-const visability = document.querySelector('.main-bar__data--visability');
-const pressureBox = document.querySelector('.main-bar__data--pressure');
-const forecastBox = document.querySelector('.top-bar__forecast');
-const searchInput = document.querySelector('.top-bar__search');
-const submitInput = document.querySelector('.top-bar__search-btn');
-const asideImg = document.querySelector('.aside__info-img');
-const asideDescription = document.querySelector('.aside__info-decription');
-const asideData = document.querySelector('.aside__data');
-const main = document.querySelector('.main');
-const modal = document.querySelector('.modal');
-const modalInput = document.querySelector('.modal__input');
-const modalSubmit = document.querySelector('.modal__input-btn');
-const tempType = document.querySelectorAll('.top-bar__type-btn');
-const tempTypeContainer = document.querySelector('.top-bar__type');
-
-let inputValue;
-
-const date = `${new Date()}`;
-const currDay = date.split(' ')[0];
-const currDate = +date.split(' ')[2];
-const currMonth = date.split(' ')[1];
-
-let units;
-
 function getUnits() {
   tempType.forEach((el) => {
     if (el.classList.contains('top-bar__type-btn--active')) {
@@ -38,18 +6,52 @@ function getUnits() {
   });
 }
 
+function changeUnits(units) {
+  units === 'metric' ? (unit = 'C') : (unit = 'F');
+}
+
+function error(err) {
+  errorBox.classList.add('error--active');
+
+  modal.style.opacity = 0;
+  main.classList.add('fade');
+  errorMessage.textContent = `${err}, please, try again`;
+
+  setTimeout(function () {
+    modalInput.value = '';
+    modal.style.opacity = 1;
+    modal.style.display = 'block';
+    errorBox.classList.remove('error--active');
+  }, 4000);
+}
+
 async function getData(city, type) {
   try {
     const response = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${type}`,
     );
 
-    if (!response.ok) throw new Error('Problem getting City');
+    if (!response.ok) throw new Error('Problem with getting City');
     const data = await response.json();
     renderMainInfo(data);
-    console.log(data);
   } catch (err) {
-    console.log(`Yo, your error: ${err.message}`);
+    error(err);
+  }
+}
+
+async function getForecast(city, type) {
+  try {
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${type}`,
+    );
+
+    if (!response.ok) throw new Error('Problem getting City');
+    const data = await response.json();
+    renderForecast(data);
+    main.classList.remove('fade');
+    modal.style.display = 'none';
+  } catch (err) {
+    error(err);
   }
 }
 
@@ -68,24 +70,12 @@ function renderMainInfo(data) {
   )}`;
 
   humidityBox.textContent = `${humidity}`;
-  range.value = humidity;
+  windRange.style.width = `${humidity}%`;
   windSpeed.textContent = Math.round(speed);
   windIcon.style.transform = `rotate(${deg - 45}deg)`;
   visability.textContent = `${(data.visibility / 1000).toFixed(1)}`;
   pressureBox.textContent = pressure;
-}
-async function getForecast(city, type) {
-  try {
-    const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${type}`,
-    );
-
-    if (!response.ok) throw new Error('Problem getting City');
-    const data = await response.json();
-    renderForecast(data);
-  } catch (err) {
-    console.log(err.message);
-  }
+  mainUnit.textContent = unit;
 }
 
 function renderForecast(data) {
@@ -117,10 +107,10 @@ function renderForecast(data) {
                 <div class="top-bar__temp">
                   <p class="top-bar__day">${Math.round(
                     maxTemp,
-                  )}<span class="temp">C</span></p>
+                  )}<span class="temp">${unit}</span></p>
                   <p class="top-bar__day--min">${Math.round(
                     minTemp,
-                  )}<span class="temp">C</span></p>
+                  )}<span class="temp">${unit}</span></p>
                 </div>
               </li>
       `;
@@ -134,8 +124,7 @@ modalSubmit.addEventListener('click', function (e) {
   if (!modalInput.value) return;
   inputValue = modalInput.value;
   updateUI(inputValue);
-  main.classList.remove('fade');
-  modal.style.display = 'none';
+  modal.style.display = '0';
 });
 
 submitInput.addEventListener('click', function (e) {
@@ -162,4 +151,5 @@ function updateUI(data) {
   getData(data, units);
   getForecast(data, units);
   searchInput.value = '';
+  changeUnits(units);
 }

@@ -48,3 +48,110 @@
     height: 0.3rem;
   }
 }
+
+.modal {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.3s;
+  box-shadow: 0 0 2rem #000;
+
+  &--hide {
+    display: none;
+  }
+
+  &__form {
+    position: relative;
+  }
+
+  &__input {
+    padding: 1.5rem 3rem;
+    font-size: 3.5rem;
+    font-family: inherit;
+
+    border: none;
+    outline: none;
+    border-radius: 2rem;
+  }
+
+  &__input-btn {
+    position: absolute;
+    top: 50%;
+    right: 2rem;
+    transform: translateY(-50%);
+    width: 2.5rem;
+    height: 2.5rem;
+    background-image: url(/img/icons/search-solid.svg);
+    border: none;
+    background-color: transparent;
+  }
+}
+.range {
+  width: 50%;
+  height: 0.5rem;
+  background-color: $primary-dark;
+  border-radius: 0.3rem;
+  // overflow: hidden;
+  position: relative;
+
+  &__tracker {
+    width: 30%;
+    height: 0.5rem;
+    background-color: #fdc736;
+    border-radius: 0.3rem;
+  }
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: -2.3rem;
+    font-size: 1rem;
+    // width: 0.5rem;
+    // height: 1rem;
+    color: #5e5e6a;
+  }
+
+  &::before {
+    content: '0';
+    left: 0;
+  }
+  &:after {
+    content: '100';
+    right: 0;
+  }
+}
+
+.error {
+  margin: 1rem;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 30rem;
+  max-width: 50rem;
+  width: 100%;
+  height: 10rem;
+  background: $primary-dark;
+  border-radius: 3rem;
+  border: 1px solid #fdc736;
+  color: #fdc736;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease-in;
+
+  &--active {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.8;
+  }
+
+  &__message {
+    margin-top: 2.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 2.3rem;
+    font-weight: 300;
+  }
+}

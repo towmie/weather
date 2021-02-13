@@ -31,7 +31,7 @@
             <li class="aside__info-item">
               <p class="aside__info-data">
                 <span class="aside__data">15</span>
-                <span class="temper-type temper-type--big">C</span>
+                <span class="temper-type temper-type--big unit">C</span>
               </p>
             </li>
             <li class="aside__info-item"
@@ -80,36 +80,46 @@
                   class="top-bar__img"
                 />
                 <div class="top-bar__temp">
-                  <p class="top-bar__day">16<span class="temp">C</span></p>
-                  <p class="top-bar__day--min">17<span class="temp">C</span></p>
+                  <p class="top-bar__day">16<span class="temp unit">C</span></p>
+                  <p class="top-bar__day--min"
+                    >17<span class="temp unit">C</span></p
+                  >
                 </div> </li
               ><li class="top-bar__forecast-card">
                 <h5 class="top-bar__date">Tomorrow</h5>
                 <img src="/img/small-test.png" alt="" class="top-bar__img" />
                 <div class="top-bar__temp">
-                  <p class="top-bar__day">16<span class="temp">C</span></p>
-                  <p class="top-bar__day--min">17<span class="temp">C</span></p>
+                  <p class="top-bar__day">16<span class="temp unit">C</span></p>
+                  <p class="top-bar__day--min"
+                    >17<span class="temp unit">C</span></p
+                  >
                 </div> </li
               ><li class="top-bar__forecast-card">
                 <h5 class="top-bar__date">Tomorrow</h5>
                 <img src="/img/small-test.png" alt="" class="top-bar__img" />
                 <div class="top-bar__temp">
-                  <p class="top-bar__day">16<span class="temp">C</span></p>
-                  <p class="top-bar__day--min">17<span class="temp">C</span></p>
+                  <p class="top-bar__day">16<span class="temp unit">C</span></p>
+                  <p class="top-bar__day--min"
+                    >17<span class="temp unit">C</span></p
+                  >
                 </div> </li
               ><li class="top-bar__forecast-card">
                 <h5 class="top-bar__date">Tomorrow</h5>
                 <img src="/img/small-test.png" alt="" class="top-bar__img" />
                 <div class="top-bar__temp">
-                  <p class="top-bar__day">16<span class="temp">C</span></p>
-                  <p class="top-bar__day--min">17<span class="temp">C</span></p>
+                  <p class="top-bar__day">16<span class="temp unit">C</span></p>
+                  <p class="top-bar__day--min"
+                    >17<span class="temp unit">C</span></p
+                  >
                 </div> </li
               ><li class="top-bar__forecast-card">
                 <h5 class="top-bar__date">Tomorrow</h5>
                 <img src="/img/small-test.png" alt="" class="top-bar__img" />
                 <div class="top-bar__temp">
-                  <p class="top-bar__day">16<span class="temp">C</span></p>
-                  <p class="top-bar__day--min">17<span class="temp">C</span></p>
+                  <p class="top-bar__day">16<span class="temp unit">C</span></p>
+                  <p class="top-bar__day--min"
+                    >17<span class="temp unit">C</span></p
+                  >
                 </div>
               </li>
             </ul>
@@ -136,7 +146,9 @@
                   >
                   <span class="main-bar__units">%</span>
                 </p>
-                <input class="main-bar__range" type="range" value="80" />
+                <div class="range">
+                  <div class="range__tracker"></div>
+                </div>
               </li>
               <li class="main-bar__item">
                 <h5 class="main-bar__heading">Visability</h5>
@@ -168,10 +180,15 @@
           class="modal__input"
           placeholder="Find your city"
           value=""
+          required
         />
         <button type="submit" class="modal__input-btn"></button>
       </form>
     </div>
+    <div class="error">
+      <p class="error__message">Wrong city</p>
+    </div>
+    <script src="js/vars.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>
